@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <title>Excalidraw</title>
+</head>
+
+<body>
+    <main id="main">
+        <div class="nav">
+            <div class="menu">
+                <button><i class="fa-solid fa-bars"></i></button>
+            </div>
+
+            <div class="tool-box">
+                <div class="tool-container">
+
+                    <button class="tool" id="lock"><i class="fa-solid fa-unlock-keyhole"></i></button>
+
+                    <div class="hr_divider"></div>
+
+                    <button class="tool" id="hand"><i id="grab" class="fa-regular fa-hand"></i></button>
+
+                    <button class="tool" id="pointer"><i class="fa-solid fa-arrow-pointer"></i></button>
+
+                    <button class="tool" id="square"><i class="fa-regular fa-square"></i></button>
+
+                    <button class="tool" id="diamond"><i class="fa-regular fa-square diamond"></i></button>
+
+                    <button class="tool" id="circle"><i class="fa-regular fa-circle"></i></button>
+
+                    <button class="tool" id="arrow"><i class="fa-solid fa-arrow-right"></i></button>
+
+                    <button class="tool" id="line"><i class="fa-solid fa-minus"></i></button>
+
+                    <button class="tool" id="pencil"><i class="fa-solid fa-pencil"></i></button>
+
+                    <button class="tool" id="text"><i class="fa-solid fa-font"></i></button>
+
+                    <button class="tool" id="image"><i class="fa-regular fa-image"></i></button>
+
+                    <button class="tool" id="eraser"><i id="clear" class="fa-solid fa-eraser"></i></button>
+
+                    <div class="hr_divider"></div>
+
+                    <button class="tool" id="more"><i class="fa-solid fa-shapes"></i></button>
+
+                </div>
+            </div>
+            <div class="btn">
+                <button class="user"><i class="fa-regular fa-user"></i></button>
+                <button class="lib"><i class="fa-solid fa-book"></i> &nbsp;Library</button>
+            </div>
+        </div>
+
+        <div class="color-palette">
+            <div class="stroke">
+                <label class="title">Stroke</label>
+                <ul class="options">
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="hr_divider"></li>
+                    <li class="option">
+                        <input type="color" id="color-picker" value="#000000">
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-color">
+                <label class="title">Background</label>
+                <ul class="options">
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="hr_divider"></li>
+                    <li class="option">
+                        <input type="color" id="bgColor-picker" value="#000">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="fill-color">
+                <input type="checkbox" id="fill-color">
+                <label for="fill-color">Fill Color</label>
+            </div>
+
+            <div class="stroke-width">
+                <label class="title">Stroke Width</label>
+                <div class="stroke-btn">
+                    <button class="width-btn active" id="small"><i class="fa-solid fa-minus" style="font-size: 10px;"></i></button>
+                    <button class="width-btn" id="mid"><i class="fa-solid fa-minus" style="font-size: 15px;"></i></button>
+                    <button class="width-btn" id="thick"><i class="fa-solid fa-minus"style="font-size: 20px;"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="foot">
+            <div class="foot-left">
+                <div class="zoom-div">
+                    <div id="zoom-out" class="decrease"><i class="fa-solid fa-minus"></i></i></div>
+                    <div class="percentage">100%</div>
+                    <div id="zoom-in" class="increase"><i class="fa-solid fa-plus"></i></div>
+                </div>
+                <div class="undo-redo-div">
+                    <div id="undo" class="undo">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+                    <div id="redo" class="redo">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-right">
+                <div class="encript">
+                    <i class="fa-solid fa-shield-heart" style="color: #6965db; cursor: pointer"></i>
+                </div>
+                <div class="help">
+                    <i class="fa-regular fa-circle-question"></i>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="canvas"></canvas>
+    </main>
+
+    <script src="./script.js"></script>
+    <script src="./undo&redo.js"></script>
+    <script src="./eraser.js"></script>
+</body>
+
+</html>
