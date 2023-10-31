@@ -1,3 +1,4 @@
+
 const undoStack = [];
 const redoStack = [];
 
@@ -9,31 +10,41 @@ function saveCanvasState() {
 
 // Implement undo functionality
 const undoButton = document.getElementById('undo');
-undoButton.addEventListener('click', () => {
-    if (undoStack.length > 1) {
-        redoStack.push(undoStack.pop()); // Move the current state to the redo stack
-        const snapshot = new Image();
-        snapshot.src = undoStack[undoStack.length - 1];
-        snapshot.onload = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(snapshot, 0, 0);
-        };
-    }
-});
+undoButton.addEventListener('click', handleUndo);
 
 // Implement redo functionality
 const redoButton = document.getElementById('redo');
-redoButton.addEventListener('click', () => {
-    if (redoStack.length > 0) {
-        const snapshot = new Image();
-        snapshot.src = redoStack.pop();
-        snapshot.onload = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(snapshot, 0, 0);
-            undoStack.push(snapshot.src); // Move the current state back to the undo stack
-        };
+redoButton.addEventListener('click', handleRedo);
+
+// Handle undo action
+function handleUndo() {
+    if (undoStack.length > 1) {
+        redoStack.push(undoStack.pop()); // Move the current state to the redo stack
+        restoreCanvasState(undoStack[undoStack.length - 1]);
     }
-});
+}
+
+// Handle redo action
+function handleRedo() {
+    if (redoStack.length > 0) {
+        const snapshot = redoStack.pop();
+        restoreCanvasState(snapshot);
+        undoStack.push(snapshot); // Move the current state back to the undo stack
+    }
+}
+
+// Function to restore the canvas state from a data URL
+function restoreCanvasState(dataURL) {
+    const img = new Image();
+    img.onload = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+    };
+    img.src = dataURL;
+}
+
+// Call saveCanvasState initially and when drawing is done
+saveCanvasState(); // Save the initial state
 
 // Add a function to clear the undo and redo stacks
 function clearUndoRedoStacks() {
@@ -43,6 +54,11 @@ function clearUndoRedoStacks() {
 
 // Call saveCanvasState when drawing is done
 canvas.addEventListener('mouseup', () => {
+    isDrawing = false;
+    saveCanvasState();
+});
+
+canvas.addEventListener('touchend', () => {
     isDrawing = false;
     saveCanvasState();
 });

@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
@@ -17,8 +19,45 @@
 <body>
     <main id="main">
         <div class="nav">
-            <div class="menu">
-                <button><i class="fa-solid fa-bars"></i></button>
+            <div class="menu" >
+
+                 <button class="b1" onclick="toggleMenu()" type="button"><i class="fa-solid fa-bars"></i></button>
+                 <ul class="dropdown-menu menu" id="menu" style="z-index: 0;">
+                    <li><a class="dropdown-item my-1 d-flex align-items-center justify-content-between" href="#"> <div><i class="fa-regular fa-folder"></i> Open  </div> <span style="font-size: small; color: gray; align-self: flex-end;">Ctrl+O</span></a></li>
+                    <li><a class="dropdown-item my-1" href="#"><i class="fa-solid fa-download me-2" style="color: #89898b;"></i>Save to...</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center justify-content-between" href="#"><div><i class="fa-solid fa-image me-2" style="color: #727479;"></i>Export image...</div> <span style="font-size: small; color: gray;">Ctrl+Shift+E</span></a></li>
+                    <li><a class="dropdown-item my-1" href="#"> <i class="fa-solid fa-user-group me-2" style="color: #6c7171; "></i>Live Collaboration...</a></li>
+                    <li><a class="dropdown-item my-1 d-flex align-items-center justify-content-between" href="#"><div class=""><i class="fa-regular fa-circle-question me-2" style="color: #6e7072;"></i>Help</div><span style="font-size: small; color: gray;">?</span></a></li>
+                    <li><a class="dropdown-item my-1" href="#"> <i class="fa-solid fa-trash me-2" style="color: #47494d;"></i>Reset the canvas</a></li>
+                     <hr width="90%" style="margin: auto;">
+         
+                     <li><a class="dropdown-item my-1" href="#"> <i class="fa-solid fa-gift me-2" style="color: #6a6b6c;"></i>Excalidraw+</a></li>
+                     <li><a class="dropdown-item my-1" href="#"><i class="fa-brands fa-github me-2" style="color: #4d4f51;"></i>GitHub</a></li>
+                     <li><a class="dropdown-item my-1" href="#"> <i class="fa-brands fa-discord me-2" style="color: #656667;"></i>Discord</a></li>
+                     <li><a class="dropdown-item my-1" href="#"> <i class="fa-brands fa-twitter me-2" style="color: #747576;"></i>Twitter</a></li>
+         
+                     <hr width="90%" style="margin: auto;">
+         
+                     <li><a class="dropdown-item my-2" href="#"> <i class="fa-solid fa-moon me-2" style="color: #58595a;"></i>Dark mode</a></li>
+                   
+                  <select name="Language" id="Language" class="d-flex justify-content-center" style="margin: auto; width: 80%;">
+                   <option value="English">English</option>
+                   <option value="Marathi">Deutsche</option>
+                   <option value="Kannada">Italian</option>
+                   <option value="French">French</option>
+                   </select>
+                 
+                   <p class="fs-small">Canvas background</p>
+                   <div class="ms-2">
+                     <button id="colorbtn1"></button>
+                     <button id="colorbtn2"></button>
+                     <button id="colorbtn3"></button>
+                     <button id="colorbtn4"></button>
+                     <button id="colorbtn5"></button>
+                     <button id="colorbtn6"></button>
+                   </div>
+                 </ul>
+
             </div>
 
             <div class="tool-box">
@@ -87,7 +126,7 @@
                     <li class="option"></li>
                     <li class="hr_divider"></li>
                     <li class="option">
-                        <input type="color" id="bgColor-picker" value="#000">
+                        <input type="color" id="bgColor-picker" value="#000000">
                     </li>
                 </ul>
             </div>
@@ -139,7 +178,6 @@
 
     <script src="./script.js"></script>
     <script src="./undo&redo.js"></script>
-    <script src="./eraser.js"></script>
 </body>
 
 </html>
