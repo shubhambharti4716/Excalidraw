@@ -340,13 +340,35 @@ canvas.addEventListener('touchmove', (event) => {
     }
 });
 
+// function drawFreehand(touch) {
+//     const x = touch.clientX - canvas.getBoundingClientRect().left;
+//     const y = touch.clientY - canvas.getBoundingClientRect().top;
+
+//     ctx.lineTo(x, y);
+//     ctx.stroke();
+// }
+
+
 function drawFreehand(touch) {
     const x = touch.clientX - canvas.getBoundingClientRect().left;
     const y = touch.clientY - canvas.getBoundingClientRect().top;
 
+    if (!isDrawing) {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineWidth = 5; // Set the line width to 5 (adjust as needed)
+    }
+
     ctx.lineTo(x, y);
     ctx.stroke();
 }
+
+canvas.addEventListener('touchend', () => {
+    isDrawing = false;
+    ctx.closePath();
+});
+
 
 let startX, startY;
 let drawingSnapshot;  // Variable to store a snapshot of the canvas for preserving previous drawings
